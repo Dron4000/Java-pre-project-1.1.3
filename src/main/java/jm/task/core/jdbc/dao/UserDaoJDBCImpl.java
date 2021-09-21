@@ -32,6 +32,8 @@ public class UserDaoJDBCImpl implements UserDao {
 
         try {
             preparedStatement = getConnection().prepareStatement(createTable);
+            preparedStatement.executeUpdate();
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
@@ -51,7 +53,7 @@ public class UserDaoJDBCImpl implements UserDao {
         String SQLdropUsersTable = "DROP TABLE IF EXISTS new_fack_table ";
         try {
             preparedStatement = getConnection().prepareStatement(SQLdropUsersTable);
-            preparedStatement.execute();
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -75,7 +77,7 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, lastName);
             preparedStatement.setInt(3, age);
-            preparedStatement.execute();
+            preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
@@ -97,9 +99,8 @@ public class UserDaoJDBCImpl implements UserDao {
         String SQLremoveUserById = "DELETE FROM new_fack_table WHERE id =?";
         try {
             preparedStatement = getConnection().prepareStatement(SQLremoveUserById);
-
             preparedStatement.setLong(1, id);
-            preparedStatement.execute();
+            preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
