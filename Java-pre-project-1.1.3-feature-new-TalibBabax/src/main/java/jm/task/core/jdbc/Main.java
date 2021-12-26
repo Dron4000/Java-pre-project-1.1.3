@@ -17,7 +17,6 @@ public class Main {
 
         userService.createUsersTable();
         String name = "Andrey";
-        userService.saveUser(name, "Skvortsov", (byte) 12);
         System.out.println(" пользователь добавлен успешно " + name);
 
         name = "Dron";
